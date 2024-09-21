@@ -1,11 +1,7 @@
-127.0.0.1       counter.yadro.ru
-0.0.0.0         account.jetbrains.com 
 127.0.0.1	localhost
-127.0.1.1	bravest
+192.168.0.5	bravest
 192.168.0.40	white
 192.168.0.10	filesrv
-192.168.0.6	djangosrv
-192.168.0.31    bravebox.it
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
