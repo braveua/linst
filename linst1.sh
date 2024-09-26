@@ -8,4 +8,7 @@ sudo flatpak install -y com.google.Chrome
 
 sudo apt install -y far2l-gui
 
+mkdir -p ~/filesrv/share
+mkdir -p ~/filesrv/torrent
+
 echo done
