@@ -8,10 +8,16 @@ sudo flatpak install -y com.google.Chrome
 
 sudo apt install -y far2l-gui
 
-printf 'sshfs#brave@192.168.0.10:/media/3TB/share/ /home/brave/filesrv/share fuse defaults,idmap=user,port=22,allow_other,reconnect,_netdev,users,identityfile=/home/brave/.ssh/id_rsa 0 0\n' | sudo tee -a /etc/fstab
-printf 'sshfs#brave@192.168.0.10:/media/3TB/torrent/ /home/brave/filesrv/torrent fuse defaults,idmap=user,port=22,allow_other,reconnect,_netdev,users,identityfile=/home/brave/.ssh/id_rsa 0 0\n' | sudo tee -a /etc/fstab
+#create rsa key for ssh
+ssh-keygen -q -t rsa -f ~/.ssh/id_rsa -N '1st key' <<< y
+ssh-copy-id brave@192.168.0.10
+
+#настройка подключение шар
 mkdir -p ~/filesrv/share
 mkdir -p ~/filesrv/torrent
-
+printf 'user_allow_other\n' | sudo tee -a /etc/fuse.conf
+printf 'sshfs#brave@192.168.0.10:/media/3TB/share/ /home/brave/filesrv/share fuse defaults,idmap=user,port=22,allow_other,reconnect,_netdev,users,identityfile=/home/brave/.ssh/id_rsa 0 0\n' | sudo tee -a /etc/fstab
+printf 'sshfs#brave@192.168.0.10:/media/3TB/torrent/ /home/brave/filesrv/torrent fuse defaults,idmap=user,port=22,allow_other,reconnect,_netdev,users,identityfile=/home/brave/.ssh/id_rsa 0 0\n' | sudo tee -a /etc/fstab
+mount -a
 
 echo done
