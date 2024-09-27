@@ -24,7 +24,7 @@ ssh-copy-id brave@192.168.0.10
 #настройка подключение шар
 mkdir -p ~/filesrv/share
 mkdir -p ~/filesrv/torrent
-sudo cat <<EOF >> /etc/fs
+sudo cat <<EOF >> /etc/fstab
 # //192.168.0.10/Projects /media/PythonProjects cifs credentials=/home/brave/.smbcred,iocharset=utf8,gid=1000,uid=1000,file_mode=0777,dir_mode=0777 0 0
 # //192.168.0.10/torrent /media/torrent cifs credentials=/home/brave/.smbcred,iocharset=utf8,gid=1000,uid=1000,file_mode=0777,dir_mode=0777 0 0
 # //192.168.0.10/music /media/music cifs credentials=/home/brave/.smbcred,iocharset=utf8,gid=1000,uid=1000,file_mode=0777,dir_mode=0777 0 0
